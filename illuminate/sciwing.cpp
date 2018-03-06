@@ -25,12 +25,12 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 #include "illuminate.h"
-#ifdef USE_QUASI_DOME_ARRAY
+#ifdef USE_SCI_WING_ARRAY
 #include "ledarrayinterface.h"
 
 // Pin definitions (used internally)
 #define GSCLK 6 
-#define LAT 3  
+#define LAT 3
 #define SPI_MOSI 11
 #define SPI_CLK 13
 #define TRIGGER_OUTPUT_PIN_0 23
@@ -43,7 +43,7 @@
 #define SN 1
 
 // Device and Software Descriptors
-const char * LedArrayInterface::device_name = "quasi-dome";
+const char * LedArrayInterface::device_name = "sci-wing";
 const int LedArrayInterface::serial_number = SN;
 const char * LedArrayInterface::device_hardware_revision = "1.0";
 const float LedArrayInterface::max_na = 1.0;
@@ -55,7 +55,7 @@ const int LedArrayInterface::color_channel_count = 3;
 const char LedArrayInterface::color_channel_names[] = {'r', 'g', 'b'};
 const float LedArrayInterface::color_channel_center_wavelengths[] = {0.48, 0.525, 0.625};
 const int LedArrayInterface::bit_depth = 16;
-const int16_t LedArrayInterface::tlc_chip_count = 38;
+const int16_t LedArrayInterface::tlc_chip_count = 52;
 const bool LedArrayInterface::supports_fast_sequence = false;
 const float LedArrayInterface::led_array_distance_z_default = 60.0;
 
@@ -67,7 +67,7 @@ int LedArrayInterface::debug = 0;
 
 /**** Device-specific variables ****/
 TLC5955 tlc; // TLC5955 object
-uint32_t gsclk_frequency = 10000000;
+uint32_t gsclk_frequency = 1000000;
 
 // FORMAT: hole number, channel, 100*x, 100*y, 100*z
 PROGMEM const int16_t LedArrayInterface::led_positions[][5] = {
@@ -881,7 +881,7 @@ void LedArrayInterface::deviceSetup()
   tlc.setAllDcData(127);
 
   // Set Max Current Values (see TLC5955 datasheet)
-  tlc.setMaxCurrent(3, 3, 3); // Go up to 7
+  tlc.setMaxCurrent(2, 2, 2); // Go up to 7
 
   // Set Function Control Data Latch values. See the TLC5955 Datasheet for the purpose of this latch.
   // DSPRPT, TMGRST, RFRESH, ESPWM, LSDVLT

@@ -26,7 +26,7 @@
 */
 #include "illuminate.h"
 
-#ifdef USE_TARGET_ARRAY
+#ifdef USE_SCI_ROUND_ARRAY
 
 #include "ledarrayinterface.h"
 
