@@ -243,7 +243,9 @@ void LedArray::printSystemParams()
   Serial.print(F(",\n    \"part_number\" : "));
   Serial.print(getPartNumber());
   Serial.print(F(",\n    \"mac_address\" : "));
+  Serial.print(F("\""));
   printMacAddress();
+  Serial.print(F("\""));
 
   // Terminate JSON
   Serial.printf("\n}", SERIAL_LINE_ENDING);
