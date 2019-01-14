@@ -5,6 +5,7 @@ Illuminate was designed to standardize the interface and functionality of LED ar
 ## Install
 1. Install [Arduino](https://www.arduino.cc/) software
 2. Install [Teensyduino](https://www.pjrc.com/teensy/td_download.html) software (If using a teensy micro-controller)
+  - The Teansy used is the Teensy 3.2 with a CPU frequency of 96 MHz.
 3. Check out repostory
 ```bash
   git clone https://github.com/zfphil/illuminate.git
